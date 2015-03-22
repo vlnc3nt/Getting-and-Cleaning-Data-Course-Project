@@ -18,7 +18,6 @@ Dataset for the project: https://d396qusza40orc.cloudfront.net/getdata%2Fproject
 ###Dataset
 
 The dataset includes the following files:
-=========================================
 
 - 'README.txt'
 - 'features_info.txt': Shows information about the variables used on the feature vector.
@@ -31,13 +30,49 @@ The dataset includes the following files:
 - 'test/y_test.txt': Test labels.
 - 'test/subject_test.txt': Each row identifies the subject who performed the activity for each window sample. 
 
+Files residing within the Inertial Signals folders would not be used to create the tidy data file. 
+
+
+###Feature Selection 
+The features selected for this database come from the accelerometer and gyroscope 3-axial raw signals tAcc-XYZ and tGyro-XYZ. These time domain signals (prefix 't' to denote time) were captured at a constant rate of 50 Hz. Then they were filtered using a median filter and a 3rd order low pass Butterworth filter with a corner frequency of 20 Hz to remove noise. Similarly, the acceleration signal was then separated into body and gravity acceleration signals (tBodyAcc-XYZ and tGravityAcc-XYZ) using another low pass Butterworth filter with a corner frequency of 0.3 Hz. 
+
+Subsequently, the body linear acceleration and angular velocity were derived in time to obtain Jerk signals (tBodyAccJerk-XYZ and tBodyGyroJerk-XYZ). Also the magnitude of these three-dimensional signals were calculated using the Euclidean norm (tBodyAccMag, tGravityAccMag, tBodyAccJerkMag, tBodyGyroMag, tBodyGyroJerkMag). 
+
+Finally a Fast Fourier Transform (FFT) was applied to some of these signals producing fBodyAcc-XYZ, fBodyAccJerk-XYZ, fBodyGyro-XYZ, fBodyAccJerkMag, fBodyGyroMag, fBodyGyroJerkMag. (Note the 'f' to indicate frequency domain signals). 
+
+These signals were used to estimate variables of the feature vector for each pattern:  
+'-XYZ' is used to denote 3-axial signals in the X, Y and Z directions.
+
+- tBodyAcc-XYZ
+- tGravityAcc-XYZ
+- tBodyAccJerk-XYZ
+- tBodyGyro-XYZ
+- tBodyGyroJerk-XYZ
+- tBodyAccMag
+- tGravityAccMag
+- tBodyAccJerkMag
+- tBodyGyroMag
+- tBodyGyroJerkMag
+- fBodyAcc-XYZ
+- fBodyAccJerk-XYZ
+- fBodyGyro-XYZ
+- fBodyAccMag
+- fBodyAccJerkMag
+- fBodyGyroMag
+- fBodyGyroJerkMag
+
+The set of variables to be examined in the tidy data file are the mean of:
+
+1. mean(): Mean value
+2. std(): Standard deviation
+
 
 ###Data Transformation
 The raw data is processed with run_analysis.R to produce a tidy data file named tidy_data.txt
 
 1. Merges the training and the test sets to create one data set.
  
-   The training and test data for the activity, subject and signals variables are read and combined into a single data set
+   The training and test data for the activity, subject and signals variables are read and combined into a single data set.
 
 2. Extracts only the measurements on the mean and standard deviation for each measurement.
  
@@ -52,11 +87,11 @@ The raw data is processed with run_analysis.R to produce a tidy data file named 
    The descriptive variable name for the data could be found in 'features.txt' and this is mapped to the combined x_train & x_train signals variables. The abbreviated names are retained as renaming all the abbreviation in full would result in very long column names. The following changes are made to symbols that are not suitable in names and typo errors:
       1. Substitute "-" with "_"
       2. Remove "()"
-      3. Correcting type of "BodyBody" to "Body"
+      3. Correct typo "BodyBody" to "Body"
 
 5. From the data set in step 4, creates a second, independent tidy data set with the average of each variable for each activity and each subject.
  
-   
+   The data is summarized using the mean of each signal variable and grouped by subject followed by activity. A text file named tidy_data.txt is then created and placed in the R Working Directory.
 
 
 
