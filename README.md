@@ -25,11 +25,14 @@ You will find in this Repo:
 
 ####Getting Started
 
+
 #####Data
 The data should be downloaded from this link: https://d396qusza40orc.cloudfront.net/getdata%2Fprojectfiles%2FUCI%20HAR%20Dataset.zip and extracted to the R Working Directory.
 
+
 #####R Package
 The R Package required for this operation is dplyr.
+
 
 #####R Script
 Place the R script in the R Working Directory and run the code by using source("run_analysis.R"). A new file named tidy_data.txt will be created in the R working directory.
